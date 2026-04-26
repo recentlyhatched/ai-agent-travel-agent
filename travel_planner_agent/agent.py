@@ -1,13 +1,20 @@
-from google.adk.agents import Agent
-from google.adk.tools import google_search
+from google.adk.agents.llm_agent import Agent
+from travel_agent import travel_agent
+from weather_agent import weather_agent
 
 root_agent = Agent(
-    name="travel_agent",
     model="gemini-2.5-flash",
-    tools=[google_search],
-    instruction="""You are a travel agent.
-Your job is to help the user plan a trip.
-You have access to a search engine.
-If you don't know the answer, you can use the search engine.
-When you are done, reply with "DONE".""",
+    name="root_agent",
+    description="Main router agent that sends tasks to sub-agents.",
+    instruction="""
+You are the main assistant.
+
+Route user requests:
+
+- If user asks about travel, trips, flights → use travel_agent
+- If user asks about weather, temperature, forecast → use weather_agent
+
+If unsure, respond directly.
+""",
+    sub_agents=[travel_agent, weather_agent]
 )
