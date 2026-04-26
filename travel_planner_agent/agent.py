@@ -1,20 +1,30 @@
-from google.adk.agents.llm_agent import Agent
-from travel_agent.agent import travel_agent
-from weather_agent.agent import weather_agent
+from google.adk.agents import Agent
+
+from travel_planner_agent.flight_agent.agent import flight_agent
+from travel_planner_agent.hotel_agent.agent import hotel_agent
+from travel_planner_agent.itinerary_agent.agent import itinerary_agent
+
 
 root_agent = Agent(
+    name="travel_agent",
     model="gemini-2.5-flash",
-    name="root_agent",
-    description="Main router agent that sends tasks to sub-agents.",
+    description="Main travel planning agent that coordinates flights, stays, and itineraries.",
+    sub_agents=[flight_agent, hotel_agent, itinerary_agent],
     instruction="""
-You are the main assistant.
+You are a helpful travel agent.
 
-Route user requests:
+Your job is to help the user plan trips, find flights, Airbnb stays, and create itineraries.
 
-- If user asks about travel, trips, flights → use travel_agent
-- If user asks about weather, temperature, forecast → use weather_agent
+Available specialists:
+- flight_agent for flights
+- stay_agent for Airbnb stays
+- itinerary_agent for trip plans
 
-If unsure, respond directly.
+Rules:
+- Delegate to the correct specialist based on the user's request.
+- If the user asks for a complete trip, help with flights, stay, and itinerary.
+- If the user has not provided enough details, ask one short follow-up question.
+- Keep answers simple and helpful.
+- When finished, reply with "DONE".
 """,
-    sub_agents=[travel_agent, weather_agent]
 )

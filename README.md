@@ -10,6 +10,8 @@ Run travel agent with web interface: $ adk web --port 8000
 
 navigate to: [http://localhost:8000](http://localhost:8000)
 
+Start Airbnb MCP server in a separate terminal: $ npx -y @openbnb/mcp-server-airbnb@0.1.2 --ignore-robots-txt
+
 ## create agent steps 
 
 Override existing content? [y/N]: y
