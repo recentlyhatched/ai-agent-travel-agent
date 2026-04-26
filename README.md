@@ -1,12 +1,12 @@
 # ai-agent-travel-agent
 
-Run travel agent in the terminal: $adk run travel_planner_agent
+Run travel agent in the terminal: $ adk run travel_planner_agent
 
 Enter text at the prompt [user]:
 
 To exit the travel agent: [user] exit
 
-Run travel agent with web interface: $adk web --port 8000
+Run travel agent with web interface: $ adk web --port 8000
 
 navigate to: [http://localhost:8000](http://localhost:8000)
 
@@ -32,13 +32,14 @@ Enter Google API key:
 
 ## Pre-reqs:
 
-Verify python: $python --version
+Verify python: $ python --version
 
-Create virtual env: $python3 -m venv .venv
+Create virtual env: $ python3 -m venv .venv
 
-Activate virtual env: $source .venv/bin/activate
+Activate virtual env: $ source .venv/bin/activate
 
-Install dependencies: $pip install --upgrade pip
+Install dependencies: $ pip install --upgrade pip
+$ pip install requests
 
 Install google-adk: $pip install google-adk
 

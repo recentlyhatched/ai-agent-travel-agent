@@ -1,18 +1,15 @@
 from google.adk.agents.llm_agent import Agent
+from weather_agent.tools import get_weather
 
 weather_agent = Agent(
     model="gemini-2.5-flash",
     name="weather_agent",
-    description="Provides weather information and forecasts.",
+    description="Simple weather assistant",
     instruction="""
 You are a weather assistant.
 
-Help users with:
-- Current weather
-- Forecasts
-- Best time to travel based on weather
-- Packing suggestions
-
-Keep answers short and practical.
-"""
+Use get_weather tool for any weather question.
+Keep answers short.
+""",
+    tools=[get_weather]
 )
