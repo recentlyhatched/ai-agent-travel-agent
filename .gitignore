@@ -1,3 +1,10 @@
 venv/
-.env
 travel_planner_agent/.env
+
+# Python
+travel_planner_agent/__pycache__/
+travel_planner_agent/*.pyc
+
+# Local ADK state
+travel_planner_agent/.adk/
+travel_planner_agent/session.db
